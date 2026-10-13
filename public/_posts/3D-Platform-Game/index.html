@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- =========================
+         BASIC META
+    ========================= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>3D Platform Game Case Study (Unity 3D Platformer) | MSK Real Labs</title>
+
+  <meta name="description"
+    content="Technical case study of the 3D Platform Game, a Unity 3D platformer built in C# with URP, featuring player movement, jumping, dynamic levels and obstacles, and health and score systems." />
+
+  <meta name="keywords"
+    content="Unity, C#, URP, 3D Platformer, Game Development, Unity Case Study" />
+
+  <meta name="author" content="Muhammad Shaheer Kifayat" />
+
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+  <meta name="theme-color" content="#1a1a2e" />
+
+  <!-- =========================
+         CANONICAL URL
+    ========================= -->
+  <link rel="canonical" href="https://mskdevhub-website.pages.dev/_posts/3D-Platform-Game/" />
+
+  <!-- =========================
+         OPEN GRAPH (Facebook, LinkedIn)
+    ========================= -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="MSK Real Labs" />
+  <meta property="og:url" content="https://mskdevhub-website.pages.dev/_posts/3D-Platform-Game/" />
+  <meta property="og:title" content="3D Platform Game - Unity 3D Platformer Case Study | MSK Real Labs" />
+  <meta property="og:description"
+    content="Technical case study of the 3D Platform Game, a Unity 3D platformer built in C# with URP, featuring player movement, jumping, dynamic levels and obstacles, and health and score systems." />
+  <meta property="og:image" content="https://mskdevhub-website.pages.dev/assets/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="3D Platform Game Gameplay" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- =========================
+         TWITTER/X
+    ========================= -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="3D Platform Game - Unity 3D Platformer Case Study | MSK Real Labs" />
+  <meta name="twitter:description"
+    content="Technical case study of the 3D Platform Game, a Unity 3D platformer built in C# with URP, featuring player movement, jumping, dynamic levels and obstacles, and health and score systems." />
+  <meta name="twitter:image" content="https://mskdevhub-website.pages.dev/assets/images/og-image.png" />
+  <meta name="twitter:image:alt" content="3D Platform Game Gameplay" />
+  <meta name="twitter:creator" content="@MSKRealLabs" />
+  <meta name="twitter:site" content="@MSKRealLabs" />
+
+  <!-- =========================
+         STRUCTURED DATA
+    ========================= -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://mskdevhub-website.pages.dev/_posts/3D-Platform-Game/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://mskdevhub-website.pages.dev/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "3D Platform Game",
+              "item": "https://mskdevhub-website.pages.dev/_posts/3D-Platform-Game/"
+            }
+          ]
+        },
+        {
+          "@type": "TechArticle",
+          "@id": "https://mskdevhub-website.pages.dev/_posts/3D-Platform-Game/#article",
+          "headline": "3D Platform Game - Unity 3D Platformer Case Study",
+          "description": "Technical case study of the 3D Platform Game, a Unity 3D platformer built with C# and URP.",
+          "image": "https://mskdevhub-website.pages.dev/assets/images/og-image.png",
+          "author": {
+            "@type": "Person",
+            "name": "Muhammad Shaheer Kifayat",
+            "url": "https://mskdevhub-website.pages.dev/"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "MSK Real Labs",
+            "logo": "https://mskdevhub-website.pages.dev/assets/images/android-chrome-512x512.png"
+          },
+          "datePublished": "2026-07-15"
+        }
+      ]
+    }
+  </script>
+
+  <!-- =========================
+         FAVICONS
+    ========================= -->
+  <link rel="icon" href="/assets/images/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/images/android-chrome-512x512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="manifest" href="/assets/images/site.webmanifest">
+
+  <!-- =========================
+         PRELOAD CRITICAL ASSETS
+    ========================= -->
+  <link rel="preload" href="/assets/images/logo.webp" as="image" />
+
+  <!-- =========================
+         STYLES & LIBRARIES
+    ========================= -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/navbar.css" />
+  <link rel="stylesheet" href="/assets/css/footer.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+
+  <script>
+    window.PAGE_SECTIONS = [
+      { id: '3d-platform-game-container', url: '/includes/3dplatformgame.html' }
+    ];
+  </script>
+  <!-- Content visibility fallback (no-JS / script failure) -->
+  <noscript>
+    <style>
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .site-loader { display: none !important; }
+    </style>
+  </noscript>
+  <script>
+    (function () {
+      function mskFallback() {
+        if (window.__mskAppReady) return;
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('reveal-active'); });
+        var loader = document.getElementById('site-loader');
+        if (loader) loader.style.display = 'none';
+        if (document.body) document.body.style.overflow = '';
+      }
+      window.addEventListener('load', function () { setTimeout(mskFallback, 3000); });
+      setTimeout(mskFallback, 8000);
+    })();
+  </script>
+  <link rel="stylesheet" href="/assets/css/switcher.css" />
+</head>
+
+<body>
+  <!--=============== LOADER ===============-->
+  <div id="site-loader" class="site-loader">
+    <div class="loader-bg"></div>
+    <div class="loader-content" id="loader-content">
+      <div class="loader-logo-wrapper" id="loader-logo-wrapper">
+        <img src="/assets/images/logo.webp" alt="Loading Logo" class="loader-logo" id="loader-logo">
+      </div>
+      <div class="loader-text" id="loader-text">Loading 3D-Platform-Game...</div>
+      <div class="loader-progress" id="loader-progress">0%</div>
+      <div class="loader-bar-container" id="loader-bar-container">
+        <div class="loader-bar" id="loader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!--=============== DYNAMIC COMPONENTS ===============-->
+  <div id="navbar-container">
+    <header class="header" id="header">
+      <nav class="nav container" aria-label="Main navigation">
+        <a href="/" class="nav-logo" style="display: flex; align-items: center;" aria-label="MSK Real Labs Home">
+          <img src="/assets/images/logo.webp" alt="MSK Real Labs Logo" class="nav-logo-img" style="width: 40px; height: 40px;">
+        </a>
+        <div class="nav-menu" id="nav-menu">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/projects/" class="nav-link active-link">Projects</a></li>
+            <li class="nav-item"><a href="/services/" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="/resume/" class="nav-link">Resume</a></li>
+            <li class="nav-item"><a href="/skills/" class="nav-link">Skills</a></li>
+            <li class="nav-item"><a href="/contact/" class="nav-link">Contact</a></li>
+          </ul>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/mskreallabs/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><i class="ri-linkedin-box-fill" aria-hidden="true"></i></a>
+            <a href="https://github.com/mskreallabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><i class="ri-github-fill" aria-hidden="true"></i></a>
+            <a href="https://www.youtube.com/@MSKRealLabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="YouTube"><i class="ri-youtube-fill" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/mskreallabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook"><i class="ri-facebook-fill" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/mskreallabs/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><i class="ri-instagram-fill" aria-hidden="true"></i></a>
+            <a href="https://www.tiktok.com/@mskrealname" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok"><i class="ri-tiktok-fill" aria-hidden="true"></i></a>
+          </div>
+          <div class="section-deco header-deco">
+            <img src="/assets/images/shape-1.webp" alt="" class="shape" loading="lazy">
+          </div>
+        </div>
+        <div class="nav-buttons">
+          <div class="nav-settings" id="switcher-toggle" role="button" tabindex="0" aria-label="Style Switcher">
+            <i class="ri-settings-2-line" aria-hidden="true"></i>
+          </div>
+          <div class="nav-toggle" id="nav-toggle" role="button" tabindex="0" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="nav-menu"></div>
+        </div>
+      </nav>
+    </header>
+  </div>
+  <main class="main" id="main-content">
+    <div id="3d-platform-game-container">
+<section class="post-section section" id="3d-platform-game-post">
+  <div class="post-container">
+
+    <!-- Header -->
+    <header class="post-header">
+      <h1 class="post-title">3D Platform Game</h1>
+      <div class="post-meta">
+        <span><i class="ri-calendar-line" aria-hidden="true"></i> July 2026</span>
+        <span><i class="ri-code-box-line" aria-hidden="true"></i> 3D Platformer</span>
+        <span><i class="ri-git-branch-line" aria-hidden="true"></i> v1.0.0</span>
+      </div>
+      <div class="post-tags">
+        <span>Unity</span>
+        <span>C#</span>
+        <span>URP</span>
+        <span>3D Platformer</span>
+      </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <div class="swiper post-hero-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="post-hero">
+            <img src="/assets/images/website-3DPlatformGame.webp" alt="3D Platform Game gameplay" loading="lazy">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="post-hero">
+            <img src="/assets/images/Cover-heroSection.webp" alt="3D Platform Game level environment" loading="lazy">
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination hero-pagination"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="post-content">
+      <h2>Overview</h2>
+      <p>
+        <strong>3D Platform Game</strong> is a platformer built with <strong>Unity</strong> and <strong>C# scripting</strong> by MSK Real Labs. The project focuses on fast-paced 3D platforming mechanics, responsive player movement and jumping, dynamic levels and obstacles, and interactive UI, targeting both Windows and WebGL.
+      </p>
+
+      <blockquote>
+        "A 3D platformer is a great way to explore spatial game design, character control, and level pacing in Unity."
+      </blockquote>
+
+      <h2>Key Features</h2>
+      <div class="swiper post-features-swiper">
+        <div class="swiper-wrapper post-features">
+
+        <div class="swiper-slide feature-box">
+          <i class="ri-gamepad-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Player Movement &amp; Jumping</h3>
+          <p class="feature-desc">Responsive 3D character movement, jumping, and control systems built in C#.</p>
+        </div>
+        <div class="swiper-slide feature-box">
+          <i class="ri-layout-masonry-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Dynamic Levels &amp; Obstacles</h3>
+          <p class="feature-desc">Designed levels with obstacles and platforming challenges to keep the game engaging.</p>
+        </div>
+        <div class="swiper-slide feature-box">
+          <i class="ri-heart-pulse-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Health &amp; Score Systems</h3>
+          <p class="feature-desc">Health and score systems that track player progress through the level.</p>
+        </div>
+        <div class="swiper-slide feature-box">
+          <i class="ri-window-2-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Interactive UI</h3>
+          <p class="feature-desc">Interactive UI elements for menus, HUD, and in-game feedback.</p>
+        </div>
+      
+        </div>
+        <div class="swiper-pagination features-pagination"></div>
+      </div>
+      <h2>Technical Implementation</h2>
+      <p>
+        The project uses Unity with the <strong>Universal Render Pipeline (URP)</strong> and modular C# scripts split across player, environment, health, and UI responsibilities. It is configured for cross-platform builds on Windows and WebGL with optimized 3D assets and animations.
+      </p>
+
+      <h3>Player Controller (C#)</h3>
+      <p>
+        A simplified example of a 3D character controller for movement and jumping:
+      </p>
+
+      <pre><code>using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    public float moveSpeed = 6f;
+    public float jumpHeight = 2f;
+    public float gravity = -20f;
+
+    private CharacterController controller;
+    private Vector3 velocity;
+    private bool isGrounded;
+
+    void Start()
+    {
+        controller = GetComponent&lt;CharacterController&gt;();
+    }
+
+    void Update()
+    {
+        isGrounded = controller.isGrounded;
+        if (isGrounded &amp;&amp; velocity.y &lt; 0) velocity.y = -2f;
+
+        float moveX = Input.GetAxis("Horizontal");
+        float moveZ = Input.GetAxis("Vertical");
+        Vector3 move = transform.right * moveX + transform.forward * moveZ;
+        controller.Move(move * moveSpeed * Time.deltaTime);
+
+        if (Input.GetButtonDown("Jump") &amp;&amp; isGrounded)
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
+    }
+}</code></pre>
+
+      <h2>Installation & Usage</h2>
+      <p>
+        Running the game locally requires Unity Hub and Unity Editor.
+      </p>
+      <ul>
+        <li>Clone the repository from GitHub: <code>git clone https://github.com/mskreallabs/Unity-3D-Platform-Game.git</code>.</li>
+        <li>Open Unity Hub, click <strong>Add</strong>, and select the cloned project directory.</li>
+        <li>Ensure the correct Unity version is selected and launch the project.</li>
+        <li>In the project browser, open the main scene and press the <strong>Play</strong> button to run and test the game.</li>
+      </ul>
+
+      <div style="text-align: center; margin-top: 4rem;">
+        <a href="https://github.com/mskreallabs/Unity-3D-Platform-Game" target="_blank" rel="noopener noreferrer"
+          class="btn game-btn primary"
+          style="display: inline-flex; justify-content: center; width: auto; padding: 1rem 2rem;">
+          <i class="ri-github-fill" aria-hidden="true"></i> View Source Code
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+      <script src="/assets/js/post.js"></script>
+    </div>
+  </main>
+  <div id="footer-container">
+    <footer class="footer">
+      <div class="footer-container container">
+        <div class="footer-socials social-links">
+            <a href="https://www.linkedin.com/in/mskreallabs/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><i class="ri-linkedin-box-fill" aria-hidden="true"></i></a>
+            <a href="https://github.com/mskreallabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><i class="ri-github-fill" aria-hidden="true"></i></a>
+            <a href="https://www.youtube.com/@MSKRealLabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="YouTube"><i class="ri-youtube-fill" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/mskreallabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook"><i class="ri-facebook-fill" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/mskreallabs/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><i class="ri-instagram-fill" aria-hidden="true"></i></a>
+            <a href="https://www.tiktok.com/@mskrealname" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok"><i class="ri-tiktok-fill" aria-hidden="true"></i></a>
+        </div>
+        <p class="footer-copyright">&copy; 2026 <span>MSK Real Labs</span>. All Rights Reserved.</p>
+        <p class="footer-copyright">Developed by <span>Muhammad Shaheer Kifayat</span></p>
+      </div>
+    </footer>
+  </div>
+  
+  <div id="switcher-container">
+<div class="style-switcher" id="style-switcher">
+    <h2 class="style-switcher-title">Style Switcher</h2>
+
+    <div class="style-switcher-item">
+      <h3 class="style-switcher-subtitle">Colors</h3>
+      <div class="style-switcher-colors">
+        <span class="style-switcher-color active-color" style="--hue:210">
+          <i class="ri-check-line"></i>
+        </span>
+        <span class="style-switcher-color " style="--hue:260">
+          <i class="ri-check-line"></i>
+        </span>
+        <span class="style-switcher-color" style="--hue:345">
+          <i class="ri-check-line"></i>
+        </span>
+        <span class="style-switcher-color" style="--hue:165">
+          <i class="ri-check-line"></i>
+        </span>
+        <span class="style-switcher-color" style="--hue:65">
+          <i class="ri-check-line"></i>
+        </span>
+        <span class="style-switcher-color" style="--hue:15">
+          <i class="ri-check-line"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="style-switcher-item">
+      <h3 class="style-switcher-subtitle">Theme</h3>
+      <div class="style-switcher-themes">
+        <div class="style-switcher-theme">
+          <input type="radio" class="style-switcher-input" name="body-theme" value="light" checked="true"
+            id="light-theme">
+          <label for="light-theme" class="style-switcher-label">Light</label>
+        </div>
+        <div class="style-switcher-theme">
+          <input type="radio" class="style-switcher-input" name="body-theme" value="dark" id="dark-theme">
+          <label for="dark-theme" class="style-switcher-label">Dark</label>
+        </div>
+      </div>
+    </div>
+    <div class="style-switcher-close" id="switcher-close" role="button" tabindex="0" aria-label="Close Style Switcher">
+      <i class="ri-close-line" aria-hidden="true"></i>
+    </div>
+  </div>
+</div>
+
+  <!--=============== SWIPER JS ===============-->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js" defer></script>
+  <!--=============== EMAIL JS ===============-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+  <!--=============== JS ===============-->
+  <script src="/assets/js/navbar.js" defer></script>
+  <script src="/assets/js/switcher.js"></script>
+  <script src="/assets/js/app.js" defer></script>
+</body>
+
+</html>

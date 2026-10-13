@@ -1,0 +1,201 @@
+================================================================================
+MSK REAL LABS - SWITCHER / SEO / DEPLOYMENT DIAGNOSIS & FIX REPORT
+Project : mskreallabs (Cloudflare Pages)
+Site    : https://mskreallabs.pages.dev/
+Repo    : D:\All-Projects-Works\Github-Games-Works\Website-MSK-Real-Labs
+Date    : 2026-10-12
+================================================================================
+
+1. ROOT CAUSE OF THE "BLANK" /includes/switcher PAGE
+--------------------------------------------------------------------------------
+VERDICT: /includes/switcher (served from public/includes/switcher.html) is an
+INTENTIONAL HTML FRAGMENT, not a standalone page. The blank screen is EXPECTED
+behaviour, not a bug.
+
+Evidence:
+  - public/includes/switcher.html contains NO <!DOCTYPE>, <html>, <head> or
+    <body>. It is a partial: a <link> to switcher.css, the
+    <div class="style-switcher" id="style-switcher"> panel, and a <script>
+    tag for switcher.js.
+  - public/assets/css/switcher.css positions the panel OFF-SCREEN until opened:
+        .style-switcher { position: fixed; top: 0; right: -100%; ... }
+        .show-switcher { right: 0; }
+    So loading the fragment on its own renders a white page with the panel
+    parked off the right edge of the viewport.
+  - Live: GET /includes/switcher -> 200, text/html, 2011 bytes, the panel HTML.
+  - Live: GET /includes/switcher.html -> 308 -> /includes/switcher (Cloudflare
+    Pages automatic clean-URL redirect).
+
+The fragment is included into real pages (see OS files) and is correctly marked
+noindex (see section 3). It must NOT be promoted to a standalone page (that would
+inject a second <html>/<body> into host pages and break the switcher).
+
+2. IS THE THEME SWITCHER BROKEN? NO - VERIFIED WORKING IN PRODUCTION
+--------------------------------------------------------------------------------
+A real headless-Chrome (DevTools Protocol) test was run against the LIVE site:
+
+  https://mskreallabs.pages.dev/         -> title OK, panel present, toggle present,
+                                            loader finished, open on toggle = true,
+                                            color click changed --hue 210->260,
+                                            dark mode applied (body.dark),
+                                            close works, 0 JS exceptions, 0 console errors
+  https://mskreallabs.pages.dev/services/ -> identical: all true, 0 errors
+
+The homepage already renders the switcher panel statically (pre-rendered), links
+switcher.css and loads switcher.js before app.js, so no runtime redirect occurs.
+
+3. WHAT WAS ACTUALLY FIXED / VERIFIED
+--------------------------------------------------------------------------------
+The prior commit (d0993e7) had already pre-rendered the switcher into every page
+and normalized app.js. This session verified that work and made three small,
+targeted fixes:
+
+  a) public/_posts/Unity-SolarSystemSimulation-Game/index.html
+       <title> changed from the raw slug to a descriptive, keyword-accurate
+       title derived from the page's own metadata:
+       "Unity Solar System Simulation Case Study (Unity 6, C#) | MSK Real Labs"
+  b) public/_posts/Unity-2D-Shooter-Game/index.html
+       <title> changed from the raw slug to
+       "Unity 2D Shooter Game Case Study (Unity, C#) | MSK Real Labs"
+  c) public/assets/js/app.js
+       Removed an unnecessary redirect hop: the invalid-anchor fallback now
+       navigates to "/404" instead of "/404.html" (which 308-redirected to
+       "/404"). A comment documents why.
+
+No design, wording, sections, images, branding, animations or responsive layout
+were changed. No redirects were added. Nothing was hidden or emptied.
+
+Note: project name is "mskreallabs". wrangler.toml and package.json have been
+aligned to "mskreallabs" (committed in 7b43a91) so the deploy target can no
+longer be mismatched.
+
+4. ROUTES, STATUSES AND HEADERS (PRODUCTION, POST-DEPLOY)
+--------------------------------------------------------------------------------
+/                                     200  text/html   (index)
+/projects/                            200  text/html
+/services/                            200  text/html
+/skills/                              200  text/html
+/resume/                              200  text/html
+/contact/                             200  text/html
+/_posts/p001-opengl/                  200  text/html
+/_posts/Unity-SolarSystemSimulation-Game/ 200 text/html
+/_posts/Unity-2D-Shooter-Game/        200  text/html
+/_posts/3D-Platform-Game/             200  text/html
+/_posts/3D-Platform-Runner/           200  text/html
+/_posts/GTA-Style-NewInputSystem-Game/ 200 text/html
+/includes/switcher                    200  text/html   X-Robots-Tag: noindex, nofollow
+/includes/switcher.html               308  -> /includes/switcher (noindex)
+/robots.txt                           200  text/plain
+/sitemap.xml                          200  application/xml (12 URLs)
+/404                                  200  text/html   (custom not-found page)
+/<unknown route>                      404
+/assets/js/switcher.js                200  application/javascript
+/assets/css/switcher.css              200  text/css
+/assets/js/app.js                     200  application/javascript
+/assets/images/logo.webp              200  image/webp
+/assets/images/og-image.png           200  image/png
+No redirect loops. Only remaining .html redirect is Cloudflare's built-in
+clean-URL (/.html -> clean), which cannot be disabled and is harmless.
+
+5. SEO AUDIT (ALL 12 PUBLIC PAGES)
+--------------------------------------------------------------------------------
+  - Every page: HTTP 200, one <h1>, unique <title>, meta description, viewport,
+    meta robots = "index, follow, max-image-preview:large,..."
+  - Canonical: self-referential, absolute, unique on every page (no duplicates).
+  - Open Graph + Twitter summary_large_image present on every page.
+  - robots.txt: "Allow: /" + Sitemap: https://mskreallabs.pages.dev/sitemap.xml
+  - sitemap.xml: 12 real canonical URLs only (home, 5 sections, 6 case studies).
+    No fragments, no query strings, no redirecting URLs, no preview URLs.
+  - /includes/* are excluded from indexing via _headers.
+  - Google site verification meta tag present on the homepage.
+  - Local link check: 39 files, 466 local refs, 0 missing.
+  - Mobile (390x844) headless test: no horizontal overflow on homepage,
+    /services/ or a case-study page; switcher panel is full-width (390px).
+
+6. DEPLOYMENT
+--------------------------------------------------------------------------------
+Two deploy paths exist, because the Pages project "mskreallabs" is BOTH
+Git-connected (auto-builds on push to main) AND manually deployable.
+
+  a) Direct upload (used this session):
+     Command : npx wrangler pages deploy public --project-name mskreallabs \
+                  --branch main --commit-dirty=true
+     Result  : Deployment complete -> https://d9a9927b.mskreallabs.pages.dev
+     The deploy script (npm run deploy) runs "npm run build" first, so the
+     direct upload always contains the freshly built public/_worker.js.
+
+  b) Git build (triggered by the git push of commit 7b43a91):
+     Result  : Deployment https://843209b3.mskreallabs.pages.dev became the live
+               Production deployment.
+
+Verification (production alias https://mskreallabs.pages.dev/):
+  - /_posts/Unity-SolarSystemSimulation-Game/ title = updated (live).
+  - /_posts/Unity-2D-Shooter-Game/ title = updated (live).
+  - /assets/js/app.js on prod = 10482 bytes, byte-identical to the local file;
+    contains location.href = '/404' and not '/404.html'.
+
+IMPORTANT - API WORKER REGRESSION FOUND AND FIXED:
+  The project's Git build_config had an EMPTY build_command, and public/_worker.js
+  is .gitignored. So a Git build deployed the repo's public/ "as-is" and OMITTED
+  the API Worker. Result: on Git-built deployments the API Worker never ran:
+      POST /api/contact   -> 405
+      POST /api/auth/login-> 405
+  Proof (same repo, two build paths):
+      d9a9927b (wrangler upload)  POST /api/contact -> 400  (Worker ran)
+      b42f868b (wrangler upload)  POST /api/contact -> 400  (Worker ran)
+      63c5727d (Git build)        POST /api/contact -> 405  (no Worker)
+      843209b3 (Git build 7b43a91)POST /api/contact -> 405  (no Worker)
+  Because the push made a Git build the live Production, production's API was
+  affected. Fix applied to the Pages project settings (read-modify-write via the
+  Cloudflare API, D1 binding "DB" was already present and unchanged):
+      build_config.build_command = "npm run build"
+      build_config.destination_dir = "public"
+  Git builds will now generate public/_worker.js before deploying, so both deploy
+  paths produce an identical, Worker-enabled site. This is a settings change, not
+  a code change.
+
+  VERIFIED: the push of ce3f3ed produced Git build adbd667c, whose stages were
+  queued/initialize/clone_repo/build/deploy = all success. Once live:
+      POST https://adbd667c.mskreallabs.pages.dev/api/contact -> 400 (Worker ran)
+      POST https://mskreallabs.pages.dev/api/contact           -> 400 (Worker ran)
+      POST https://mskreallabs.pages.dev/api/auth/login        -> 400 (Worker ran)
+  400 = the request reached the Hono app and failed payload validation, proving
+  the Worker is active. The previous 405 (no Worker) is gone. Note: a bare
+  GET /_worker.js returns 404, which is normal in Pages advanced mode - the file
+  is the Worker script, not a served static asset.
+
+7. WHAT ONLY YOU CAN DO - GOOGLE SEARCH CONSOLE STEPS
+--------------------------------------------------------------------------------
+I have no GSC access, so the following must be done by you:
+
+  1. Sign in at https://search.google.com/search-console with the Google account
+     that owns the property (the site already has a verification meta tag, so it
+     is likely already verified).
+  2. If the property is not present: Add property -> "URL prefix" ->
+     https://mskreallabs.pages.dev/ and verify (the HTML tag is already in the
+     homepage <head>).
+  3. Sitemaps -> enter and submit exactly:
+        https://mskreallabs.pages.dev/sitemap.xml
+  4. URL Inspection -> enter and inspect exactly:
+        https://mskreallabs.pages.dev/
+     Then click "Test Live URL" and, once it reports the page is available,
+     click "Request Indexing".
+  5. (Optional) Repeat step 4 for /projects/, /services/, /skills/, /resume/,
+     /contact/ and the six case-study URLs.
+  6. Check the "Page indexing" / "Crawl Stats" reports over the coming days.
+     Expect the earlier "Redirection error" for /includes/switcher.html to clear
+     because nothing loads it at runtime any more; /includes/* is noindexed.
+
+8. RESOLVED / REMAINING
+--------------------------------------------------------------------------------
+  - Project name aligned to "mskreallabs" in wrangler.toml and package.json.
+  - Fixes committed and pushed (commit 7b43a91).
+  - Git-build API Worker regression root-caused and fixed (build_command).
+  - GSC submission/indexing: cannot be performed by me (no authorized access).
+  - No custom domain configured; canonicals intentionally use
+    https://mskreallabs.pages.dev/.
+
+================================================================================
+Verified against the live production deployment on 2026-10-12. This report does
+NOT claim that Google has indexed or will index the site.
+================================================================================

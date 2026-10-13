@@ -1,0 +1,318 @@
+/*=============== GAME STORE CARDS ===============*/
+.game-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.4s var(--transition), box-shadow 0.4s var(--transition), border-color 0.4s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(76, 175, 80, 0.2);
+  border-color: var(--first-color);
+}
+
+.game-card-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #111;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.game-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--transition);
+}
+
+.game-card:hover .game-card-img {
+  transform: scale(1.05);
+}
+
+.placeholder-img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+  transition: transform 0.6s var(--transition);
+}
+
+.game-card:hover .placeholder-img {
+  transform: scale(1.05);
+}
+
+.game-badges {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: var(--smaller-font-size);
+  font-weight: var(--font-bold);
+  backdrop-filter: blur(5px);
+}
+
+.badge.free {
+  background: var(--first-color);
+  color: var(--container-color);
+  border: 1px solid var(--first-color);
+}
+
+.badge.released {
+  background: var(--first-color);
+  color: var(--container-color);
+  border: 1px solid var(--first-color);
+}
+
+.badge.soon {
+  background: var(--first-color);
+  color: var(--container-color);
+  border: 1px solid var(--first-color);
+}
+
+.game-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.game-title {
+  font-size: var(--h3-font-size);
+  color: var(--title-color);
+  margin: 0;
+}
+
+.game-version {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  color: var(--first-color);
+  font-weight: var(--font-bold);
+}
+
+.game-category {
+  font-size: var(--small-font-size);
+  color: var(--first-color);
+  margin-bottom: 1rem;
+  font-weight: var(--font-medium);
+}
+
+.game-description {
+  font-size: var(--normal-font-size);
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.game-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.game-tech span {
+  font-size: var(--font-size-xs);
+  padding: 0.2rem 0.6rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  color: var(--text-color);
+}
+
+.game-platforms {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+  color: var(--title-color);
+  margin-bottom: 1.5rem;
+  margin-top: auto;
+}
+
+.game-platforms i.disabled {
+  opacity: 0.4;
+}
+
+.game-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.game-btn {
+  width: 100%;
+  text-align: center;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-weight: var(--font-semi-bold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s var(--transition);
+}
+
+.game-btn.primary {
+  background: var(--first-color);
+  color: #fff;
+  border: 1px solid var(--first-color);
+}
+
+.game-btn.primary:hover {
+  background: var(--title-color);
+  color: var(--container-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.game-btn.secondary {
+  background: transparent;
+  color: var(--title-color);
+  border: 1px solid var(--border-color);
+}
+
+.game-btn.secondary:hover {
+  border-color: var(--first-color);
+  color: var(--container-color);
+}
+
+.game-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/*=============== PROJECTS FILTER ===============*/
+.work-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 2.5rem;
+  row-gap: 1.5rem;
+  margin-bottom: 3rem;
+  list-style: none;
+}
+
+.work-item {
+  cursor: pointer;
+  color: var(--text-color);
+  font-weight: var(--font-semi-bold);
+  font-family: var(--second-font);
+  transition: color 0.4s;
+  font-size: var(--normal-font-size);
+}
+
+.active-work,
+.work-item:hover {
+  color: var(--first-color);
+}
+
+/*=============== PROJECTS SWIPER ===============*/
+.projects-swiper {
+  width: 100%;
+  padding-bottom: 3rem;
+}
+
+.projects-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.projects-swiper .swiper-slide {
+  height: auto;
+}
+
+/* Swiper Pagination (copied from services for consistency) */
+.swiper-pagination {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--border-color);
+  background-color: var(--container-color);
+  opacity: 0.7;
+  position: relative;
+  z-index: 10;
+  border-radius: var(--radius-full);
+  transition: all 0.3s var(--transition);
+  cursor: pointer;
+  margin: 0 !important;
+}
+
+.swiper-pagination-bullet:hover {
+  opacity: 1;
+  border-color: var(--first-color);
+}
+
+.swiper-pagination-bullet-active {
+  width: 32px;
+  background-color: var(--first-color);
+  border-color: var(--first-color);
+  opacity: 1;
+  border-radius: var(--radius-full);
+}
+
+.swiper-pagination-bullet:focus-visible {
+  outline: 2px solid var(--first-color);
+  outline-offset: 3px;
+}
+
+@media screen and (max-width: 1200px) {
+  .projects-swiper {
+    max-width: 900px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .projects-swiper {
+    max-width: 100%;
+  }
+
+  .game-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .game-card-content {
+    padding: 1rem;
+  }
+}

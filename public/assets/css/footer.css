@@ -1,0 +1,27 @@
+/*=============== FOOTER ===============*/
+.footer {
+  border-top: 2px solid var(--shadow-color);
+  background-color: var(--container-color);
+  padding-block: 2.5rem;
+
+}
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-copyright {
+  font-size: var(--small-font-size);
+  font-weight: var(--font-bold);
+}
+
+.footer-copyright span {
+  color: var(--first-color);
+}
+
+/* --- Responsive Fixes --- */
+@media screen and (max-width: 768px) {
+  .footer-container { flex-direction: column; row-gap: 1.25rem; }
+}

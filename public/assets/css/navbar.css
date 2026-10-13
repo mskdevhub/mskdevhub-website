@@ -1,0 +1,234 @@
+/*=============== HEADER & NAV ===============*/
+
+.header {
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
+  max-width: 1540px;
+
+}
+
+.nav-logo,
+.nav-link {
+  color: var(--title-color);
+  font-weight: var(--font-bold);
+}
+
+.nav-logo {
+  z-index: 900;
+  font-family: var(--second-font);
+  font-size: var(--h3-font-size);
+}
+
+.nav-logo-img {
+  transition: transform 0.3s var(--transition);
+  z-index: 900;
+}
+
+.nav-logo:hover .nav-logo-img {
+  animation: rotateLogoNav 2s infinite alternate ease-in-out;
+}
+
+@keyframes rotateLogoNav {
+  0% {
+    transform: rotate(-180deg);
+  }
+
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  column-gap: 1.75rem;
+  position: relative;
+  z-index: 1000;
+}
+
+.nav-settings,
+.nav-toggle {
+  cursor: pointer;
+}
+
+.nav-settings {
+  font-size: 1.5rem;
+}
+
+.nav-toggle {
+
+  width: 28px;
+  height: 28px;
+  position: relative;
+}
+
+.nav-toggle::before,
+.nav-toggle::after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background-color: var(--title-color);
+  position: absolute;
+  left: 0;
+  transition: all 0.7s var(--transition);
+}
+
+.nav-toggle::before {
+  top: 7px;
+}
+
+.nav-toggle::after {
+  bottom: 7px;
+}
+
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  z-index: 950;
+  background-color: var(--container-color);
+  width: 512px;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 9rem 0 0 9.5rem;
+  transition: right 1s var(--transition);
+  overflow: hidden;
+}
+
+.nav-list {
+  margin-bottom: 2.5rem;
+}
+
+.nav-item {
+  margin-bottom: 1.25rem;
+}
+
+.nav-link {
+  font-size: var(--larger-font-size);
+  transition: color 0.3s var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--first-color);
+}
+
+.header-deco {
+  height: 70%;
+  top: 128px;
+  left: 75px;
+}
+
+.header-deco .shape {
+  position: absolute;
+  z-index: -10;
+  top: -210px;
+  left: -168px;
+}
+
+/* Show menu */
+.show-menu {
+  right: 0;
+}
+
+.animate-toggle::before {
+  transform: rotate(45deg);
+  top: 14px;
+}
+
+.animate-toggle::after {
+  transform: rotate(-45deg);
+  bottom: 14px;
+}
+
+/* Active link */
+.active-link {
+  color: var(--first-color);
+}
+
+/* Change background header */
+.bg-header {
+  background-color: var(--container-color);
+}
+
+/*=============== PROFILE DROPDOWN ===============*/
+.profile-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 1rem;
+  background: var(--container-color);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 24px var(--shadow-color);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  width: max-content;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.4s var(--transition);
+  z-index: 1000;
+}
+
+.profile-dropdown.show-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.profile-name {
+  font-family: var(--second-font);
+  font-weight: var(--font-bold);
+  color: var(--title-color);
+  font-size: var(--normal-font-size);
+}
+
+.profile-logout-btn {
+  padding: 0.5rem 1.5rem;
+  font-size: var(--small-font-size);
+  cursor: pointer;
+  border-radius: 2rem;
+  border: 1px solid var(--border-color);
+}
+
+/* --- Responsive Fixes --- */
+@media screen and (max-width: 768px) {
+  .nav-menu {
+    width: 100%;
+  }
+
+  .nav-buttons {
+    column-gap: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .nav-buttons {
+    column-gap: 1.25rem;
+  }
+
+  .nav-menu {
+    padding-left: 7rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .nav-menu {
+    padding-left: 6rem;
+  }
+}

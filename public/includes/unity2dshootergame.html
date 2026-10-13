@@ -1,0 +1,151 @@
+<link rel="stylesheet" href="/assets/css/post.css">
+
+<section class="post-section section" id="p002-post">
+  <div class="post-container">
+
+    <!-- Header -->
+    <header class="post-header">
+      <h1 class="post-title">Unity 2D Shooter Game</h1>
+      <div class="post-meta">
+        <span><i class="ri-calendar-line" aria-hidden="true"></i> July 2026</span>
+        <span><i class="ri-code-box-line" aria-hidden="true"></i> Action & Arcade</span>
+        <span><i class="ri-git-branch-line" aria-hidden="true"></i> v1.0.0</span>
+      </div>
+      <div class="post-tags">
+        <span>Unity</span>
+        <span>C#</span>
+        <span>2D Physics</span>
+        <span>Sprite Graphics</span>
+      </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <div class="swiper post-hero-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="post-hero">
+            <img src="/assets/images/Website-2DShooterGame.webp" alt="Unity 2D Shooter Gameplay" loading="lazy">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="post-hero">
+            <img src="/assets/images/Cover-heroSection.webp" alt="Gameplay 2" loading="lazy">
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination hero-pagination"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="post-content">
+      <h2>Overview</h2>
+      <p>
+        <strong>Unity 2D Shooter Game</strong> is a fast-paced 2D arcade shooter built using <strong>Unity</strong> and <strong>C# scripting</strong>. The project focuses on core shooting mechanics, enemy AI, dynamic spawning, and an engaging game loop using Unity's 2D physics engine.
+      </p>
+
+      <blockquote>
+        "Building a 2D shooter showcases fundamental game design principles, from player movement and weapon systems to enemy behaviors and scoring."
+      </blockquote>
+
+      <h2>Key Features</h2>
+      <div class="swiper post-features-swiper">
+        <div class="swiper-wrapper post-features">
+
+        <div class="swiper-slide feature-box">
+          <i class="ri-gamepad-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Fluid Player Movement</h3>
+          <p class="feature-desc">Responsive 2D character controller using Unity's Rigidbody2D and Input System.</p>
+        </div>
+        <div class="swiper-slide feature-box">
+          <i class="ri-focus-2-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Weapon Mechanics</h3>
+          <p class="feature-desc">Dynamic projectile instantiation, firing rates, and hit detection.</p>
+        </div>
+        <div class="swiper-slide feature-box">
+          <i class="ri-aliens-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Enemy AI</h3>
+          <p class="feature-desc">Scripted enemy behaviors including tracking, patrol, and attack patterns.</p>
+        </div>
+        <div class="swiper-slide feature-box">
+          <i class="ri-trophy-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Score & Progression</h3>
+          <p class="feature-desc">Integrated UI for score tracking, high scores, and increasing difficulty.</p>
+        </div>
+      
+        </div>
+        <div class="swiper-pagination features-pagination"></div>
+      </div>
+      <h2>Technical Implementation</h2>
+      <p>
+        The game leverages Unity's 2D object manipulation and physics to create a smooth gameplay experience. Object pooling is utilized to manage projectiles and enemies efficiently without triggering garbage collection spikes.
+      </p>
+
+      <h3>Player Controller (C#)</h3>
+      <p>
+        A snippet of how the player movement and shooting are handled:
+      </p>
+
+      <pre><code>using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    public float moveSpeed = 5f;
+    public GameObject projectilePrefab;
+    public Transform firePoint;
+    public float fireRate = 0.2f;
+
+    private float nextFireTime;
+    private Rigidbody2D rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        HandleMovement();
+        HandleShooting();
+    }
+
+    void HandleMovement()
+    {
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+        rb.velocity = new Vector2(moveX, moveY).normalized * moveSpeed;
+    }
+
+    void HandleShooting()
+    {
+        if (Input.GetButton("Fire1") && Time.time >= nextFireTime)
+        {
+            Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+            nextFireTime = Time.time + fireRate;
+        }
+    }
+}</code></pre>
+
+      <h2>Installation & Usage</h2>
+      <p>
+        Running the game locally requires Unity Hub and Unity Editor.
+      </p>
+      <ul>
+        <li>Clone the repository from GitHub: <code>git clone https://github.com/mskreallabs/Unity-2D-Shooter-Game.git</code>.</li>
+        <li>Open Unity Hub, click <strong>Add</strong>, and select the cloned project directory.</li>
+        <li>Ensure the correct Unity version is selected and launch the project.</li>
+        <li>In the project browser, navigate to <code>Assets/Scenes/MainScene.unity</code> and open it.</li>
+        <li>Press the <strong>Play</strong> button in the editor toolbar to run and test the game.</li>
+      </ul>
+
+      <div style="text-align: center; margin-top: 4rem;">
+        <a href="https://github.com/mskreallabs/Unity-2D-Shooter-Game" target="_blank" rel="noopener noreferrer"
+          class="btn game-btn primary"
+          style="display: inline-flex; justify-content: center; width: auto; padding: 1rem 2rem;">
+          <i class="ri-github-fill" aria-hidden="true"></i> View Source Code
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/assets/js/post.js"></script>
+

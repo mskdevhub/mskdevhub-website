@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- =========================
+         BASIC META
+    ========================= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Unity 2D Shooter Game Case Study (Unity, C#) | MSK Real Labs</title>
+
+  <meta name="description"
+    content="Technical case study of Unity 2D Shooter Game, a fast-paced 2D shooter built in Unity featuring engaging shooting mechanics and dynamic enemies." />
+
+  <meta name="keywords"
+    content="Unity, C# Scripting, 2D Shooter, Action Arcade, Sprite Graphics" />
+
+  <meta name="author" content="Muhammad Shaheer Kifayat" />
+
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+  <meta name="theme-color" content="#1a1a2e" />
+
+  <!-- =========================
+         CANONICAL URL
+    ========================= -->
+  <link rel="canonical" href="https://mskdevhub-website.pages.dev/_posts/Unity-2D-Shooter-Game/" />
+
+  <!-- =========================
+         OPEN GRAPH (Facebook, LinkedIn)
+    ========================= -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="MSK Real Labs" />
+  <meta property="og:url" content="https://mskdevhub-website.pages.dev/_posts/Unity-2D-Shooter-Game/" />
+  <meta property="og:title" content="P2: Unity 2D Shooter Game - Case Study | MSK Real Labs" />
+  <meta property="og:description"
+    content="Technical case study of Unity 2D Shooter Game, a fast-paced 2D shooter built in Unity featuring engaging shooting mechanics and dynamic enemies." />
+  <meta property="og:image" content="https://mskdevhub-website.pages.dev/assets/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Unity 2D Shooter Game Gameplay" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- =========================
+         TWITTER/X
+    ========================= -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="P2: Unity 2D Shooter Game - Case Study | MSK Real Labs" />
+  <meta name="twitter:description"
+    content="Technical case study of Unity 2D Shooter Game, a fast-paced 2D shooter built in Unity featuring engaging shooting mechanics and dynamic enemies." />
+  <meta name="twitter:image" content="https://mskdevhub-website.pages.dev/assets/images/og-image.png" />
+  <meta name="twitter:image:alt" content="Unity 2D Shooter Game Gameplay" />
+  <meta name="twitter:creator" content="@MSKRealLabs" />
+  <meta name="twitter:site" content="@MSKRealLabs" />
+
+  <!-- =========================
+         STRUCTURED DATA
+    ========================= -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://mskdevhub-website.pages.dev/_posts/Unity-2D-Shooter-Game/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://mskdevhub-website.pages.dev/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Unity 2D Shooter Game",
+              "item": "https://mskdevhub-website.pages.dev/_posts/Unity-2D-Shooter-Game/"
+            }
+          ]
+        },
+        {
+          "@type": "TechArticle",
+          "@id": "https://mskdevhub-website.pages.dev/_posts/Unity-2D-Shooter-Game/#article",
+          "headline": "P2 – Unity C#: 2D Shooter Game",
+          "description": "Technical case study of Unity 2D Shooter Game, a fast-paced 2D shooter built with Unity.",
+          "image": "https://mskdevhub-website.pages.dev/assets/images/og-image.png",
+          "author": {
+            "@type": "Person",
+            "name": "Muhammad Shaheer Kifayat",
+            "url": "https://mskdevhub-website.pages.dev/"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "MSK Real Labs",
+            "logo": "https://mskdevhub-website.pages.dev/assets/images/android-chrome-512x512.png"
+          },
+          "datePublished": "2026-07-15"
+        }
+      ]
+    }
+  </script>
+
+  <!-- =========================
+         FAVICONS
+    ========================= -->
+  <link rel="icon" href="/assets/images/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/images/android-chrome-512x512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="manifest" href="/assets/images/site.webmanifest">
+
+  <!-- =========================
+         PRELOAD CRITICAL ASSETS
+    ========================= -->
+  <link rel="preload" href="/assets/images/logo.webp" as="image" />
+
+  <!-- =========================
+         STYLES & LIBRARIES
+    ========================= -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/navbar.css" />
+  <link rel="stylesheet" href="/assets/css/footer.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+
+  <script>
+    window.PAGE_SECTIONS = [
+      { id: 'unity-2d-shooter-container', url: '/includes/unity2dshootergame.html' }
+    ];
+  </script>
+  <!-- Content visibility fallback (no-JS / script failure) -->
+  <noscript>
+    <style>
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .site-loader { display: none !important; }
+    </style>
+  </noscript>
+  <script>
+    (function () {
+      function mskFallback() {
+        if (window.__mskAppReady) return;
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('reveal-active'); });
+        var loader = document.getElementById('site-loader');
+        if (loader) loader.style.display = 'none';
+        if (document.body) document.body.style.overflow = '';
+      }
+      window.addEventListener('load', function () { setTimeout(mskFallback, 3000); });
+      setTimeout(mskFallback, 8000);
+    })();
+  </script>
+  <link rel="stylesheet" href="/assets/css/switcher.css" />
+</head>
+
+<body>
+  <!--=============== LOADER ===============-->
+  <div id="site-loader" class="site-loader">
+    <div class="loader-bg"></div>
+    <div class="loader-content" id="loader-content">
+      <div class="loader-logo-wrapper" id="loader-logo-wrapper">
+        <img src="/assets/images/logo.webp" alt="Loading Logo" class="loader-logo" id="loader-logo">
+      </div>
+      <div class="loader-text" id="loader-text">Loading Unity-2D-Shooter-Game...</div>
+      <div class="loader-progress" id="loader-progress">0%</div>
+      <div class="loader-bar-container" id="loader-bar-container">
+        <div class="loader-bar" id="loader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!--=============== DYNAMIC COMPONENTS ===============-->
+  <div id="navbar-container">
+    <header class="header" id="header">
+      <nav class="nav container" aria-label="Main navigation">
+        <a href="/" class="nav-logo" style="display: flex; align-items: center;" aria-label="MSK Real Labs Home">
+          <img src="/assets/images/logo.webp" alt="MSK Real Labs Logo" class="nav-logo-img" style="width: 40px; height: 40px;">
+        </a>
+        <div class="nav-menu" id="nav-menu">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/projects/" class="nav-link active-link">Projects</a></li>
+            <li class="nav-item"><a href="/services/" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="/resume/" class="nav-link">Resume</a></li>
+            <li class="nav-item"><a href="/skills/" class="nav-link">Skills</a></li>
+            <li class="nav-item"><a href="/contact/" class="nav-link">Contact</a></li>
+          </ul>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/mskreallabs/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><i class="ri-linkedin-box-fill" aria-hidden="true"></i></a>
+            <a href="https://github.com/mskreallabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><i class="ri-github-fill" aria-hidden="true"></i></a>
+            <a href="https://www.youtube.com/@MSKRealLabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="YouTube"><i class="ri-youtube-fill" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/mskreallabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook"><i class="ri-facebook-fill" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/mskreallabs/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><i class="ri-instagram-fill" aria-hidden="true"></i></a>
+            <a href="https://www.tiktok.com/@mskrealname" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok"><i class="ri-tiktok-fill" aria-hidden="true"></i></a>
+          </div>
+          <div class="section-deco header-deco">
+            <img src="/assets/images/shape-1.webp" alt="" class="shape" loading="lazy">
+          </div>
+        </div>
+        <div class="nav-buttons">
+          <div class="nav-settings" id="switcher-toggle" role="button" tabindex="0" aria-label="Style Switcher">
+            <i class="ri-settings-2-line" aria-hidden="true"></i>
+          </div>
+          <div class="nav-toggle" id="nav-toggle" role="button" tabindex="0" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="nav-menu"></div>
+        </div>
+      </nav>
+    </header>
+  </div>
+  <main class="main" id="main-content">
+    <div id="unity-2d-shooter-container">
+<section class="post-section section" id="p002-post">
+  <div class="post-container">
+
+    <!-- Header -->
+    <header class="post-header">
+      <h1 class="post-title">Unity 2D Shooter Game</h1>
+      <div class="post-meta">
+        <span><i class="ri-calendar-line" aria-hidden="true"></i> July 2026</span>
+        <span><i class="ri-code-box-line" aria-hidden="true"></i> Action & Arcade</span>
+        <span><i class="ri-git-branch-line" aria-hidden="true"></i> v1.0.0</span>
+      </div>
+      <div class="post-tags">
+        <span>Unity</span>
+        <span>C#</span>
+        <span>2D Physics</span>
+        <span>Sprite Graphics</span>
+      </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <div class="swiper post-hero-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="post-hero">
+            <img src="/assets/images/Website-2DShooterGame.webp" alt="Unity 2D Shooter Gameplay" loading="lazy">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="post-hero">
+            <img src="/assets/images/Cover-heroSection.webp" alt="Gameplay 2" loading="lazy">
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination hero-pagination"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="post-content">
+      <h2>Overview</h2>
+      <p>
+        <strong>Unity 2D Shooter Game</strong> is a fast-paced 2D arcade shooter built using <strong>Unity</strong> and <strong>C# scripting</strong>. The project focuses on core shooting mechanics, enemy AI, dynamic spawning, and an engaging game loop using Unity's 2D physics engine.
+      </p>
+
+      <blockquote>
+        "Building a 2D shooter showcases fundamental game design principles, from player movement and weapon systems to enemy behaviors and scoring."
+      </blockquote>
+
+      <h2>Key Features</h2>
+      <div class="swiper post-features-swiper">
+        <div class="swiper-wrapper post-features">
+
+        <div class="swiper-slide feature-box">
+          <i class="ri-gamepad-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Fluid Player Movement</h3>
+          <p class="feature-desc">Responsive 2D character controller using Unity's Rigidbody2D and Input System.</p>
+        </div>
+        <div class="swiper-slide feature-box">
+          <i class="ri-focus-2-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Weapon Mechanics</h3>
+          <p class="feature-desc">Dynamic projectile instantiation, firing rates, and hit detection.</p>
+        </div>
+        <div class="swiper-slide feature-box">
+          <i class="ri-aliens-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Enemy AI</h3>
+          <p class="feature-desc">Scripted enemy behaviors including tracking, patrol, and attack patterns.</p>
+        </div>
+        <div class="swiper-slide feature-box">
+          <i class="ri-trophy-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Score & Progression</h3>
+          <p class="feature-desc">Integrated UI for score tracking, high scores, and increasing difficulty.</p>
+        </div>
+      
+        </div>
+        <div class="swiper-pagination features-pagination"></div>
+      </div>
+      <h2>Technical Implementation</h2>
+      <p>
+        The game leverages Unity's 2D object manipulation and physics to create a smooth gameplay experience. Object pooling is utilized to manage projectiles and enemies efficiently without triggering garbage collection spikes.
+      </p>
+
+      <h3>Player Controller (C#)</h3>
+      <p>
+        A snippet of how the player movement and shooting are handled:
+      </p>
+
+      <pre><code>using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    public float moveSpeed = 5f;
+    public GameObject projectilePrefab;
+    public Transform firePoint;
+    public float fireRate = 0.2f;
+
+    private float nextFireTime;
+    private Rigidbody2D rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        HandleMovement();
+        HandleShooting();
+    }
+
+    void HandleMovement()
+    {
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+        rb.velocity = new Vector2(moveX, moveY).normalized * moveSpeed;
+    }
+
+    void HandleShooting()
+    {
+        if (Input.GetButton("Fire1") && Time.time >= nextFireTime)
+        {
+            Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+            nextFireTime = Time.time + fireRate;
+        }
+    }
+}</code></pre>
+
+      <h2>Installation & Usage</h2>
+      <p>
+        Running the game locally requires Unity Hub and Unity Editor.
+      </p>
+      <ul>
+        <li>Clone the repository from GitHub: <code>git clone https://github.com/mskreallabs/Unity-2D-Shooter-Game.git</code>.</li>
+        <li>Open Unity Hub, click <strong>Add</strong>, and select the cloned project directory.</li>
+        <li>Ensure the correct Unity version is selected and launch the project.</li>
+        <li>In the project browser, navigate to <code>Assets/Scenes/MainScene.unity</code> and open it.</li>
+        <li>Press the <strong>Play</strong> button in the editor toolbar to run and test the game.</li>
+      </ul>
+
+      <div style="text-align: center; margin-top: 4rem;">
+        <a href="https://github.com/mskreallabs/Unity-2D-Shooter-Game" target="_blank" rel="noopener noreferrer"
+          class="btn game-btn primary"
+          style="display: inline-flex; justify-content: center; width: auto; padding: 1rem 2rem;">
+          <i class="ri-github-fill" aria-hidden="true"></i> View Source Code
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+      <script src="/assets/js/post.js"></script>
+    </div>
+  </main>
+  <div id="footer-container">
+    <footer class="footer">
+      <div class="footer-container container">
+        <div class="footer-socials social-links">
+            <a href="https://www.linkedin.com/in/mskreallabs/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><i class="ri-linkedin-box-fill" aria-hidden="true"></i></a>
+            <a href="https://github.com/mskreallabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><i class="ri-github-fill" aria-hidden="true"></i></a>
+            <a href="https://www.youtube.com/@MSKRealLabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="YouTube"><i class="ri-youtube-fill" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/mskreallabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook"><i class="ri-facebook-fill" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/mskreallabs/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><i class="ri-instagram-fill" aria-hidden="true"></i></a>
+            <a href="https://www.tiktok.com/@mskrealname" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok"><i class="ri-tiktok-fill" aria-hidden="true"></i></a>
+        </div>
+        <p class="footer-copyright">&copy; 2026 <span>MSK Real Labs</span>. All Rights Reserved.</p>
+        <p class="footer-copyright">Developed by <span>Muhammad Shaheer Kifayat</span></p>
+      </div>
+    </footer>
+  </div>
+  
+  <div id="switcher-container">
+<div class="style-switcher" id="style-switcher">
+    <h2 class="style-switcher-title">Style Switcher</h2>
+
+    <div class="style-switcher-item">
+      <h3 class="style-switcher-subtitle">Colors</h3>
+      <div class="style-switcher-colors">
+        <span class="style-switcher-color active-color" style="--hue:210">
+          <i class="ri-check-line"></i>
+        </span>
+        <span class="style-switcher-color " style="--hue:260">
+          <i class="ri-check-line"></i>
+        </span>
+        <span class="style-switcher-color" style="--hue:345">
+          <i class="ri-check-line"></i>
+        </span>
+        <span class="style-switcher-color" style="--hue:165">
+          <i class="ri-check-line"></i>
+        </span>
+        <span class="style-switcher-color" style="--hue:65">
+          <i class="ri-check-line"></i>
+        </span>
+        <span class="style-switcher-color" style="--hue:15">
+          <i class="ri-check-line"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="style-switcher-item">
+      <h3 class="style-switcher-subtitle">Theme</h3>
+      <div class="style-switcher-themes">
+        <div class="style-switcher-theme">
+          <input type="radio" class="style-switcher-input" name="body-theme" value="light" checked="true"
+            id="light-theme">
+          <label for="light-theme" class="style-switcher-label">Light</label>
+        </div>
+        <div class="style-switcher-theme">
+          <input type="radio" class="style-switcher-input" name="body-theme" value="dark" id="dark-theme">
+          <label for="dark-theme" class="style-switcher-label">Dark</label>
+        </div>
+      </div>
+    </div>
+    <div class="style-switcher-close" id="switcher-close" role="button" tabindex="0" aria-label="Close Style Switcher">
+      <i class="ri-close-line" aria-hidden="true"></i>
+    </div>
+  </div>
+</div>
+
+  <!--=============== SWIPER JS ===============-->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js" defer></script>
+  <!--=============== EMAIL JS ===============-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+  <!--=============== JS ===============-->
+  <script src="/assets/js/navbar.js" defer></script>
+  <script src="/assets/js/switcher.js"></script>
+  <script src="/assets/js/app.js" defer></script>
+</body>
+
+</html>

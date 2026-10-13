@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- =========================
+         BASIC META
+    ========================= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>P-001 OpenGL Obstacle Dodger | C++ Graphics Case Study | MSK Real Labs</title>
+
+  <meta name="description"
+    content="Technical case study of Obstacle Dodger, a C++17 game built from scratch using OpenGL 3.3 Core Profile, GLFW, GLAD, GLM, FreeType and OpenAL Soft." />
+
+  <meta name="keywords"
+    content="OpenGL, C++17, GLFW, GLAD, GLM, FreeType, OpenAL, game engine, graphics programming, Obstacle Dodger" />
+
+  <meta name="author" content="Muhammad Shaheer Kifayat" />
+
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+  <meta name="theme-color" content="#1a1a2e" />
+
+  <!-- =========================
+         CANONICAL URL
+    ========================= -->
+  <link rel="canonical" href="https://mskdevhub-website.pages.dev/_posts/p001-opengl/" />
+
+  <!-- =========================
+         OPEN GRAPH (Facebook, LinkedIn)
+    ========================= -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="MSK Real Labs" />
+  <meta property="og:url" content="https://mskdevhub-website.pages.dev/_posts/p001-opengl/" />
+  <meta property="og:title" content="P-001 OpenGL Obstacle Dodger - C++ Engine Case Study | MSK Real Labs" />
+  <meta property="og:description"
+    content="Technical case study of Obstacle Dodger, a C++17 game built from scratch using OpenGL 3.3 Core Profile, GLFW, GLAD, GLM, FreeType and OpenAL Soft." />
+  <meta property="og:image" content="https://mskdevhub-website.pages.dev/assets/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="P-001 OpenGL Obstacle Dodger" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- =========================
+         TWITTER/X
+    ========================= -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="P-001 OpenGL Obstacle Dodger - C++ Engine Case Study | MSK Real Labs" />
+  <meta name="twitter:description"
+    content="Technical case study of Obstacle Dodger, a C++17 game built from scratch using OpenGL 3.3 Core Profile, GLFW, GLAD, GLM, FreeType and OpenAL Soft." />
+  <meta name="twitter:image" content="https://mskdevhub-website.pages.dev/assets/images/og-image.png" />
+  <meta name="twitter:image:alt" content="P-001 OpenGL Obstacle Dodger" />
+  <meta name="twitter:creator" content="@MSKRealLabs" />
+  <meta name="twitter:site" content="@MSKRealLabs" />
+
+  <!-- =========================
+         STRUCTURED DATA
+    ========================= -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://mskdevhub-website.pages.dev/_posts/p001-opengl/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://mskdevhub-website.pages.dev/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "P-001 OpenGL Obstacle Dodger",
+              "item": "https://mskdevhub-website.pages.dev/_posts/p001-opengl/"
+            }
+          ]
+        },
+        {
+          "@type": "TechArticle",
+          "@id": "https://mskdevhub-website.pages.dev/_posts/p001-opengl/#article",
+          "headline": "P-001 OpenGL Obstacle Dodger - C++17 Engine From Scratch",
+          "description": "Technical case study of Obstacle Dodger, a C++17 game built from scratch using OpenGL 3.3 Core Profile, GLFW, GLAD, GLM, FreeType and OpenAL Soft.",
+          "image": "https://mskdevhub-website.pages.dev/assets/images/og-image.png",
+          "author": {
+            "@type": "Person",
+            "name": "Muhammad Shaheer Kifayat",
+            "url": "https://mskdevhub-website.pages.dev/"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "MSK Real Labs",
+            "logo": "https://mskdevhub-website.pages.dev/assets/images/android-chrome-512x512.png"
+          },
+          "datePublished": "2026-05-01"
+        }
+      ]
+    }
+  </script>
+
+  <!-- =========================
+         FAVICONS
+    ========================= -->
+  <link rel="icon" href="/assets/images/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/images/android-chrome-512x512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="manifest" href="/assets/images/site.webmanifest">
+
+  <!-- =========================
+         PRELOAD CRITICAL ASSETS
+    ========================= -->
+  <link rel="preload" href="/assets/images/logo.webp" as="image" />
+
+  <!-- =========================
+         STYLES & LIBRARIES
+    ========================= -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/navbar.css" />
+  <link rel="stylesheet" href="/assets/css/footer.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+
+  <script>
+    window.PAGE_SECTIONS = [
+      { id: 'p001-opengl-container', url: '/includes/p001-opengl.html' }
+    ];
+  </script>
+  <!-- Content visibility fallback (no-JS / script failure) -->
+  <noscript>
+    <style>
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .site-loader { display: none !important; }
+    </style>
+  </noscript>
+  <script>
+    (function () {
+      function mskFallback() {
+        if (window.__mskAppReady) return;
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('reveal-active'); });
+        var loader = document.getElementById('site-loader');
+        if (loader) loader.style.display = 'none';
+        if (document.body) document.body.style.overflow = '';
+      }
+      window.addEventListener('load', function () { setTimeout(mskFallback, 3000); });
+      setTimeout(mskFallback, 8000);
+    })();
+  </script>
+  <link rel="stylesheet" href="/assets/css/switcher.css" />
+</head>
+
+<body>
+  <!--=============== LOADER ===============-->
+  <div id="site-loader" class="site-loader">
+    <div class="loader-bg"></div>
+    <div class="loader-content" id="loader-content">
+      <div class="loader-logo-wrapper" id="loader-logo-wrapper">
+        <img src="/assets/images/logo.webp" alt="Loading Logo" class="loader-logo" id="loader-logo">
+      </div>
+      <div class="loader-text" id="loader-text">Loading P-001 OpenGL Obstacle Dodger...</div>
+      <div class="loader-progress" id="loader-progress">0%</div>
+      <div class="loader-bar-container" id="loader-bar-container">
+        <div class="loader-bar" id="loader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!--=============== DYNAMIC COMPONENTS ===============-->
+  <div id="navbar-container">
+    <header class="header" id="header">
+      <nav class="nav container" aria-label="Main navigation">
+        <a href="/" class="nav-logo" style="display: flex; align-items: center;" aria-label="MSK Real Labs Home">
+          <img src="/assets/images/logo.webp" alt="MSK Real Labs Logo" class="nav-logo-img" style="width: 40px; height: 40px;">
+        </a>
+        <div class="nav-menu" id="nav-menu">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/projects/" class="nav-link active-link">Projects</a></li>
+            <li class="nav-item"><a href="/services/" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="/resume/" class="nav-link">Resume</a></li>
+            <li class="nav-item"><a href="/skills/" class="nav-link">Skills</a></li>
+            <li class="nav-item"><a href="/contact/" class="nav-link">Contact</a></li>
+          </ul>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/mskreallabs/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><i class="ri-linkedin-box-fill" aria-hidden="true"></i></a>
+            <a href="https://github.com/mskreallabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><i class="ri-github-fill" aria-hidden="true"></i></a>
+            <a href="https://www.youtube.com/@MSKRealLabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="YouTube"><i class="ri-youtube-fill" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/mskreallabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook"><i class="ri-facebook-fill" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/mskreallabs/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><i class="ri-instagram-fill" aria-hidden="true"></i></a>
+            <a href="https://www.tiktok.com/@mskrealname" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok"><i class="ri-tiktok-fill" aria-hidden="true"></i></a>
+          </div>
+          <div class="section-deco header-deco">
+            <img src="/assets/images/shape-1.webp" alt="" class="shape" loading="lazy">
+          </div>
+        </div>
+        <div class="nav-buttons">
+          <div class="nav-settings" id="switcher-toggle" role="button" tabindex="0" aria-label="Style Switcher">
+            <i class="ri-settings-2-line" aria-hidden="true"></i>
+          </div>
+          <div class="nav-toggle" id="nav-toggle" role="button" tabindex="0" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="nav-menu"></div>
+        </div>
+      </nav>
+    </header>
+  </div>
+  <main class="main" id="main-content">
+    <div id="p001-opengl-container">
+<section class="post-section section" id="p001-post">
+  <div class="post-container">
+
+    <!-- Header -->
+    <header class="post-header">
+      <h1 class="post-title">P-001 OpenGL Obstacle Dodger</h1>
+      <div class="post-meta">
+        <span><i class="ri-calendar-line" aria-hidden="true"></i> May 2025</span>
+        <span><i class="ri-code-box-line" aria-hidden="true"></i> Game Development</span>
+        <span><i class="ri-git-branch-line" aria-hidden="true"></i> v1.0.0</span>
+      </div>
+      <div class="post-tags">
+        <span>C++17</span>
+        <span>OpenGL 3.3</span>
+        <span>GLFW</span>
+        <span>GLAD</span>
+        <span>GLM</span>
+        <span>FreeType</span>
+        <span>OpenAL Soft</span>
+      </div>
+    </header>
+
+    <!-- Hero Image -->
+    <div class="post-hero">
+      <img src="/assets/images/Cover-heroSection.webp" alt="P001 Obstacle Dodger Gameplay" loading="lazy">
+    </div>
+
+    <!-- Content -->
+    <div class="post-content">
+      <h2>Overview</h2>
+      <p>
+        <strong>Obstacle Dodger</strong> is a modern C++ game built from scratch using the <strong>OpenGL 3.3 Core
+          Profile</strong>. This project serves as a comprehensive exploration of low-level graphics programming, audio
+        management, and game loop architecture without relying on high-level commercial game engines like Unity or
+        Unreal Engine.
+      </p>
+
+      <blockquote>
+        "Building a game engine from scratch provides unparalleled insight into memory management, rendering pipelines,
+        and the raw performance capabilities of C++."
+      </blockquote>
+
+      <h2>Key Features</h2>
+      <div class="post-features">
+        <div class="feature-box">
+          <i class="ri-brush-3-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Modern Rendering</h3>
+          <p class="feature-desc">Utilizes OpenGL 3.3 Core Profile with custom vertex and fragment shaders for optimized
+            rendering.</p>
+        </div>
+        <div class="feature-box">
+          <i class="ri-font-size feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">FreeType Text</h3>
+          <p class="feature-desc">Dynamic font rendering engine for UI elements, scoring, and the FPS counter.</p>
+        </div>
+        <div class="feature-box">
+          <i class="ri-volume-up-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">OpenAL Audio</h3>
+          <p class="feature-desc">Integrated 3D spatial audio and sound effects using OpenAL Soft.</p>
+        </div>
+        <div class="feature-box">
+          <i class="ri-gamepad-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Input Handling</h3>
+          <p class="feature-desc">Seamless support for both Keyboard and Gamepad/Joystick inputs via GLFW.</p>
+        </div>
+      </div>
+
+      <h2>Technical Implementation</h2>
+      <p>
+        The game architecture relies on <strong>GLFW</strong> for window creation and input handling, while
+        <strong>GLAD</strong> loads the OpenGL function pointers. Math operations, including matrix transformations and
+        vector calculations, are handled efficiently by <strong>GLM</strong>.
+      </p>
+
+      <h3>Shader Compilation</h3>
+      <p>
+        All rendering is executed through programmable shaders. Below is a simplified snippet of how the C++ engine
+        loads and compiles the GLSL shaders dynamically at runtime:
+      </p>
+
+      <pre><code>unsigned int loadShader(GLenum type, const char* source) {
+    unsigned int shader = glCreateShader(type);
+    glShaderSource(shader, 1, &source, NULL);
+    glCompileShader(shader);
+    
+    int success;
+    glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+    if (!success) {
+        char infoLog[512];
+        glGetShaderInfoLog(shader, 512, NULL, infoLog);
+        std::cerr << "Shader Compilation Error:\n" << infoLog << std::endl;
+    }
+    return shader;
+}</code></pre>
+
+      <h2>Installation & Usage</h2>
+      <p>
+        If you want to run the project locally or examine the source code, you will need a C++17 compatible compiler and
+        CMake.
+      </p>
+      <ul>
+        <li>Ensure you have the required dependencies (GLFW, GLAD, GLM, FreeType, OpenAL) installed on your system.</li>
+        <li>Build the project using standard CMake commands: <code>cmake .</code> and <code>make</code>.</li>
+        <li>Run the executable generated in the build directory.</li>
+      </ul>
+
+      <div style="text-align: center; margin-top: 4rem;">
+        <a href="/projects/" class="btn game-btn primary"
+          style="display: inline-flex; justify-content: center; width: auto; padding: 1rem 2rem;">
+          <i class="ri-folder-3-line" aria-hidden="true"></i> Explore More Projects
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+      <script src="/assets/js/post.js"></script>
+    </div>
+  </main>
+  <div id="footer-container">
+    <footer class="footer">
+      <div class="footer-container container">
+        <div class="footer-socials social-links">
+            <a href="https://www.linkedin.com/in/mskreallabs/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><i class="ri-linkedin-box-fill" aria-hidden="true"></i></a>
+            <a href="https://github.com/mskreallabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><i class="ri-github-fill" aria-hidden="true"></i></a>
+            <a href="https://www.youtube.com/@MSKRealLabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="YouTube"><i class="ri-youtube-fill" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/mskreallabs" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook"><i class="ri-facebook-fill" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/mskreallabs/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><i class="ri-instagram-fill" aria-hidden="true"></i></a>
+            <a href="https://www.tiktok.com/@mskrealname" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok"><i class="ri-tiktok-fill" aria-hidden="true"></i></a>
+        </div>
+        <p class="footer-copyright">&copy; 2026 <span>MSK Real Labs</span>. All Rights Reserved.</p>
+        <p class="footer-copyright">Developed by <span>Muhammad Shaheer Kifayat</span></p>
+      </div>
+    </footer>
+  </div>
+
+  <div id="switcher-container">
+<div class="style-switcher" id="style-switcher">
+    <h2 class="style-switcher-title">Style Switcher</h2>
+
+    <div class="style-switcher-item">
+      <h3 class="style-switcher-subtitle">Colors</h3>
+      <div class="style-switcher-colors">
+        <span class="style-switcher-color active-color" style="--hue:210">
+          <i class="ri-check-line"></i>
+        </span>
+        <span class="style-switcher-color " style="--hue:260">
+          <i class="ri-check-line"></i>
+        </span>
+        <span class="style-switcher-color" style="--hue:345">
+          <i class="ri-check-line"></i>
+        </span>
+        <span class="style-switcher-color" style="--hue:165">
+          <i class="ri-check-line"></i>
+        </span>
+        <span class="style-switcher-color" style="--hue:65">
+          <i class="ri-check-line"></i>
+        </span>
+        <span class="style-switcher-color" style="--hue:15">
+          <i class="ri-check-line"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="style-switcher-item">
+      <h3 class="style-switcher-subtitle">Theme</h3>
+      <div class="style-switcher-themes">
+        <div class="style-switcher-theme">
+          <input type="radio" class="style-switcher-input" name="body-theme" value="light" checked="true"
+            id="light-theme">
+          <label for="light-theme" class="style-switcher-label">Light</label>
+        </div>
+        <div class="style-switcher-theme">
+          <input type="radio" class="style-switcher-input" name="body-theme" value="dark" id="dark-theme">
+          <label for="dark-theme" class="style-switcher-label">Dark</label>
+        </div>
+      </div>
+    </div>
+    <div class="style-switcher-close" id="switcher-close" role="button" tabindex="0" aria-label="Close Style Switcher">
+      <i class="ri-close-line" aria-hidden="true"></i>
+    </div>
+  </div>
+</div>
+
+  <!--=============== SWIPER JS ===============-->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js" defer></script>
+  <!--=============== EMAIL JS ===============-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+  <!--=============== JS ===============-->
+  <script src="/assets/js/navbar.js" defer></script>
+  <script src="/assets/js/switcher.js"></script>
+  <script src="/assets/js/app.js" defer></script>
+</body>
+
+</html>

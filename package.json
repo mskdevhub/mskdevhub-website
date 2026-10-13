@@ -1,0 +1,39 @@
+{
+  "name": "mskdevhub-website",
+  "version": "1.0.0",
+  "description": "MSK Real Labs Portfolio Website",
+  "main": "index.js",
+  "scripts": {
+    "build:worker": "esbuild src/index.js --bundle --outfile=public/_worker.js --format=esm",
+    "build": "npm run build:worker",
+    "db:init:local": "wrangler d1 execute databse --local --file=database/init-local.sql",
+    "dev": "npm run build && npm run db:init:local && wrangler pages dev public",
+    "deploy": "npm run build && wrangler pages deploy public --project-name mskdevhub-website",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mskdevhub/mskdevhub-website.git"
+  },
+  "keywords": [
+    "portfolio",
+    "game-developer",
+    "mskreallabs",
+    "mskdevhub-website",
+    "cloudflare-pages"
+  ],
+  "author": "Muhammad Shaheer Kifayat",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mskdevhub/mskdevhub-website/issues"
+  },
+  "homepage": "https://github.com/mskdevhub/mskdevhub-website#readme",
+  "devDependencies": {
+    "esbuild": "^0.28.1",
+    "wrangler": "^4.101.0"
+  },
+  "dependencies": {
+    "hono": "^4.13.10"
+  }
+}

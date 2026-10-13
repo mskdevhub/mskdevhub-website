@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main Page -->
+  <url>
+    <loc>https://mskdevhub-website.pages.dev/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Standalone Sections -->
+  <url>
+    <loc>https://mskdevhub-website.pages.dev/projects/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mskdevhub-website.pages.dev/services/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mskdevhub-website.pages.dev/skills/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mskdevhub-website.pages.dev/resume/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mskdevhub-website.pages.dev/contact/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Project Case Studies -->
+  <url>
+    <loc>https://mskdevhub-website.pages.dev/_posts/p001-opengl/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mskdevhub-website.pages.dev/_posts/Unity-SolarSystemSimulation-Game/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mskdevhub-website.pages.dev/_posts/Unity-2D-Shooter-Game/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mskdevhub-website.pages.dev/_posts/3D-Platform-Game/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mskdevhub-website.pages.dev/_posts/3D-Platform-Runner/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mskdevhub-website.pages.dev/_posts/GTA-Style-NewInputSystem-Game/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>0.6</priority>
+  </url>
+</urlset>

@@ -1,0 +1,168 @@
+<link rel="stylesheet" href="/assets/css/post.css">
+
+<section class="post-section section" id="p002-post">
+  <div class="post-container">
+
+    <!-- Header -->
+    <header class="post-header">
+      <h1 class="post-title">Unity Solar System Simulation</h1>
+      <div class="post-meta">
+        <span><i class="ri-calendar-line" aria-hidden="true"></i> July 2026</span>
+        <span><i class="ri-code-box-line" aria-hidden="true"></i> Simulation & Graphics</span>
+        <span><i class="ri-git-branch-line" aria-hidden="true"></i> v1.0.0</span>
+      </div>
+      <div class="post-tags">
+        <span>Unity 6</span>
+        <span>C#</span>
+        <span>URP</span>
+        <span>Shader Graph</span>
+        <span>Orbital Physics</span>
+        <span>UI Toolkit</span>
+      </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <div class="swiper post-hero-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="post-hero">
+            <img src="/assets/images/Website-SolarSystem.webp" alt="P1 Unity Solar System Simulation Gameplay" loading="lazy">
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="post-hero">
+            <img src="/assets/images/Cover-heroSection.webp" alt="Unity Solar System Simulation - orbital view" loading="lazy">
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination hero-pagination"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="post-content">
+      <h2>Overview</h2>
+      <p>
+        <strong>Unity Solar System Simulation</strong> is a real-time, mathematically accurate 3D simulation of our planetary system built using <strong>Unity 6</strong> and <strong>C# scripting</strong>. The project focuses on rendering orbital mechanics, planetary bodies, and realistic lighting models leveraging Unity's Universal Render Pipeline (URP) and custom shaders.
+      </p>
+
+      <blockquote>
+        "Simulating gravity and orbital paths in real-time showcases the beautiful intersection between astrophysics, mathematics, and high-performance Unity engine programming."
+      </blockquote>
+
+      <h2>Key Features</h2>
+      <div class="swiper post-features-swiper">
+        <div class="swiper-wrapper post-features">
+
+        <div class="swiper-slide feature-box">
+          <i class="ri-bubble-chart-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Keplerian Orbit Physics</h3>
+          <p class="feature-desc">Calculates planetary coordinates dynamically in C# based on orbital eccentricity, inclination, and semi-major axes.</p>
+        </div>
+        <div class="swiper-slide feature-box">
+          <i class="ri-sun-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">URP & Shader Graph</h3>
+          <p class="feature-desc">Utilizes Unity 6 URP Shader Graph for planetary atmospheres, solar bloom, and custom ring lighting.</p>
+        </div>
+        <div class="swiper-slide feature-box">
+          <i class="ri-settings-5-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Interactive UI Toolkit</h3>
+          <p class="feature-desc">Integrated dashboard for time warp scale, camera tracking, planet highlighting, and live telemetries.</p>
+        </div>
+        <div class="swiper-slide feature-box">
+          <i class="ri-pulse-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Orbital Path Trails</h3>
+          <p class="feature-desc">Renders dynamic path trails in 3D space using Unity LineRenderer components tracing planetary orbits.</p>
+        </div>
+      
+        </div>
+        <div class="swiper-pagination features-pagination"></div>
+      </div>
+      <h2>Technical Implementation</h2>
+      <p>
+        To model planet orbits, we solve <strong>Kepler's Equation</strong> at each frame step. Since Kepler's Equation has no analytical solution, we use Newton-Raphson iteration. The planetary parameters (semi-major axis, eccentricity, inclination, longitude of ascending node, argument of perihelion) are configured based on NASA's planetary data sheets.
+      </p>
+
+      <h3>Keplerian Orbit Position Solver (C#)</h3>
+      <p>
+        Here is a sample code snippet from the simulation logic showing how the 3D position is calculated in the orbital plane and then rotated into the ecliptic coordinate system:
+      </p>
+
+      <pre><code>using UnityEngine;
+
+public class PlanetOrbit : MonoBehaviour
+{
+    [Header("Orbital Parameters")]
+    public float semiMajorAxis = 10f;
+    public float eccentricity = 0.0167f;
+    public float orbitalPeriod = 365.25f;
+    public float inclination = 0.0f;
+    public float longAscNode = 0.0f;
+    public float argPerihelion = 0.0f;
+
+    private float meanAnomaly = 0.0f;
+
+    void Update()
+    {
+        // Update Mean Anomaly based on time step
+        float meanMotion = (2.0f * Mathf.PI) / orbitalPeriod;
+        meanAnomaly += meanMotion * Time.deltaTime;
+        meanAnomaly %= (2.0f * Mathf.PI);
+
+        // Solve Kepler's Equation: E - e * sin(E) = M
+        float E = SolveKepler(meanAnomaly, eccentricity);
+
+        // Calculate coordinates in the orbital plane
+        float x_orbital = semiMajorAxis * (Mathf.Cos(E) - eccentricity);
+        float y_orbital = semiMajorAxis * Mathf.Sqrt(1.0f - eccentricity * eccentricity) * Mathf.Sin(E);
+
+        // Convert to Radians
+        float i_rad = inclination * Mathf.Deg2Rad;
+        float Omega_rad = longAscNode * Mathf.Deg2Rad;
+        float w_rad = argPerihelion * Mathf.Deg2Rad;
+
+        // Rotate position to 3D ecliptic coordinates
+        float cosO = Mathf.Cos(Omega_rad), sinO = Mathf.Sin(Omega_rad);
+        float cosw = Mathf.Cos(w_rad), sinw = Mathf.Sin(w_rad);
+        float cosi = Mathf.Cos(i_rad), sini = Mathf.Sin(i_rad);
+
+        float x_ecl = x_orbital * (cosw * cosO - sinw * sinO * cosi) - y_orbital * (sinw * cosO + cosw * sinO * cosi);
+        float y_ecl = x_orbital * (cosw * sinO + sinw * cosO * cosi) - y_orbital * (sinw * sinO - cosw * cosO * cosi);
+        float z_ecl = x_orbital * (sinw * sini) + y_orbital * (cosw * sini);
+
+        transform.localPosition = new Vector3(x_ecl, z_ecl, y_ecl); // Mapping Unity's coordinate system (Y-up)
+    }
+
+    private float SolveKepler(float M, float e)
+    {
+        float E = M;
+        for (int step = 0; step < 5; ++step)
+        {
+            E = E - (E - e * Mathf.Sin(E) - M) / (1.0f - e * Mathf.Cos(E));
+        }
+        return E;
+    }
+}</code></pre>
+
+      <h2>Installation & Usage</h2>
+      <p>
+        Running the simulation locally requires Unity Hub and Unity Editor version 6 (6000.0+).
+      </p>
+      <ul>
+        <li>Clone the repository from GitHub: <code>git clone https://github.com/mskreallabs/Unity-Solar-System-Simulation.git</code>.</li>
+        <li>Open Unity Hub, click <strong>Add</strong>, and select the cloned project directory.</li>
+        <li>Ensure Unity 6 is selected as the editor version and launch the project.</li>
+        <li>In the project browser, navigate to <code>Assets/Scenes/MainScene.unity</code> and open it.</li>
+        <li>Press the <strong>Play</strong> button in the editor toolbar to run and test the simulation interface.</li>
+      </ul>
+
+      <div style="text-align: center; margin-top: 4rem;">
+        <a href="https://github.com/mskreallabs/Unity-Solar-System-Simulation" target="_blank" rel="noopener noreferrer"
+          class="btn game-btn primary"
+          style="display: inline-flex; justify-content: center; width: auto; padding: 1rem 2rem;">
+          <i class="ri-github-fill" aria-hidden="true"></i> View Source Code
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/assets/js/post.js"></script>

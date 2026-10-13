@@ -1,0 +1,166 @@
+#hero {
+  background-image: url('../images/rightSideImage.webp');
+  background-size: contain;
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  width: 100%;
+  position: relative;
+}
+
+/*=============== HOME ===============*/
+.home-container {
+  padding-block: 4.25rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.home-content {
+  position: relative;
+  z-index: 10;
+  max-width: 650px;
+  padding: 2rem;
+  border-radius: 1rem;
+  /* Subtle backdrop to ensure text is readable */
+  background: linear-gradient(to right, var(--first-color) 2%, rgba(26, 26, 46, 0) 100%);
+}
+
+.home-subtitle {
+  font-size: var(--large-font-size);
+  font-family: var(--second-font);
+  font-weight: var(--font-semi-bold);
+  margin-bottom: 1rem;
+}
+
+.home-subtitle span,
+.home-title span {
+  color: var(--first-color);
+}
+
+.home-title {
+  color: var(--white-color);
+  font-size: var(--big-font-size);
+  font-weight: var(--font-black);
+  text-shadow: 4px 4px var(--shadow-color);
+}
+
+.home-job {
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-semi-bold);
+  margin-block: 1.5rem 2.5rem;
+}
+
+/* Home Banner & Image Wrappers removed */
+
+
+
+.shape {
+  position: absolute;
+  z-index: -10;
+}
+
+.shape-1 {
+  width: clamp(6.5rem, 3.5rem + 12vw, 14rem);
+  top: 9%;
+  right: 6%;
+}
+
+.shape-2,
+.shape-3 {
+  width: clamp(4rem, 2.1rem + 7.6vw, 8.75rem);
+}
+
+.shape-2 {
+  bottom: 8%;
+  left: -12%;
+}
+
+.shape-3 {
+  bottom: 0;
+  right: -2%;
+}
+
+.home-description {
+  font-size: var(--large-font-size);
+  max-width: 520px;
+}
+
+.home-socials {
+  margin-block: 1.75rem 2.5rem;
+}
+
+.home-btns {
+  display: flex;
+  align-items: center;
+  column-gap: 4.5rem;
+}
+
+.home-link::before {
+  content: '';
+  position: absolute;
+  left: -124%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 2px;
+  background-color: var(--border-color);
+}
+
+/* --- Responsive Fixes --- */
+@media screen and (max-width: 1200px) {
+
+
+  .home-btns {
+    flex-direction: column;
+    row-gap: 3.75rem;
+    align-items: flex-start;
+  }
+
+  .home-link::before {
+    top: -3rem;
+    left: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 27px;
+  }
+
+}
+
+@media screen and (max-width: 1024px) {
+  .home-container {
+    padding-block: 2rem;
+  }
+
+  .home-title {
+    text-shadow: 2px 2px var(--shadow-color);
+  }
+
+  .home-data {
+    transform: scale(0.8);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home-content {
+    padding: 1.75rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .home-content {
+    padding: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .home-content {
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+  }
+
+  /* "MSKRealLabs" is wider than very small viewports at the default hero size */
+  .home-title {
+    font-size: 1.875rem;
+    text-shadow: 2px 2px var(--shadow-color);
+  }
+}

@@ -1,0 +1,85 @@
+/*=============== SERVICES ===============*/
+.card {
+  background-color: var(--container-color);
+  padding: 2rem 2.25rem;
+  border-radius: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  right: -1.5rem;
+  bottom: -1.5rem;
+  width: 120px;
+  height: 120px;
+  background-image: url(/assets/images/shape-3.webp);
+  background-size: cover;
+}
+
+.services-subtitle {
+  font-size: var(--smaller-font-size);
+
+}
+
+.services-title {
+  font-size: var(--h3-font-size);
+  margin-block: 4rem 1rem;
+  min-height: 90px;
+}
+
+.services-description {
+  min-height: 175px;
+
+}
+
+/* Swiper */
+.swiper-pagination {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 3rem;
+}
+
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--border-color);
+  background-color: var(--container-color);
+  opacity: 0.7;
+  position: relative;
+  z-index: 10;
+  border-radius: var(--radius-full);
+  transition: all 0.3s var(--transition);
+  cursor: pointer;
+  margin: 0 !important;
+}
+
+.swiper-pagination-bullet:hover {
+  opacity: 1;
+  border-color: var(--first-color);
+}
+
+.swiper-pagination-bullet-active {
+  width: 32px;
+  background-color: var(--first-color);
+  border-color: var(--first-color);
+  opacity: 1;
+  border-radius: var(--radius-full);
+}
+
+.swiper-pagination-bullet:focus-visible {
+  outline: 2px solid var(--first-color);
+  outline-offset: 3px;
+}
+
+/* --- Responsive Fixes --- */
+@media screen and (max-width: 1200px) {
+  .services-swiper { max-width: 900px; }
+}
+@media screen and (max-width: 768px) {
+  .services-swiper { max-width: 100%; }
+}

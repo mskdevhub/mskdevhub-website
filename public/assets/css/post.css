@@ -1,0 +1,221 @@
+/*=============== POST / DOCUMENTATION STYLES ===============*/
+.post-section {
+  padding: 8rem 0 2rem;
+  min-height: 100vh;
+}
+
+.post-container {
+  max-width: 900px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.post-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.post-title {
+  font-size: var(--h1-font-size);
+  color: var(--title-color);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.post-meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  font-size: var(--small-font-size);
+}
+
+.post-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.post-tags {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.post-tags span {
+  background-color: var(--container-color);
+  color: var(--title-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: var(--smaller-font-size);
+  font-weight: var(--font-medium);
+  border: 1px solid var(--border-color);
+}
+
+.post-hero-swiper {
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+}
+
+.post-hero {
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: 4px 4px var(--shadow-color);
+}
+
+.post-hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.post-hero:hover img {
+  transform: scale(1.05);
+}
+
+/* Post Content Styling */
+.post-content {
+  color: var(--text-color);
+  font-size: var(--normal-font-size);
+  line-height: 1.8;
+}
+
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+  color: var(--title-color);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.post-content h2 {
+  font-size: var(--h2-font-size);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.post-content h3 {
+  font-size: var(--h3-font-size);
+}
+
+.post-content p {
+  margin-bottom: 1.5rem;
+}
+
+.post-content ul,
+.post-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.post-content li {
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.post-content ul li::before {
+  content: '';
+  position: absolute;
+  left: -1.25rem;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background-color: var(--first-color);
+  border-radius: 50%;
+}
+
+.post-content strong {
+  color: var(--title-color);
+  font-weight: var(--font-bold);
+}
+
+/* Code Blocks */
+.post-content pre {
+  background-color: var(--container-color);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.post-content code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: var(--small-font-size);
+  color: #e06c75;
+}
+
+.post-content pre code {
+  color: #abb2bf;
+}
+
+/* Blockquotes */
+.post-content blockquote {
+  border-left: 4px solid var(--first-color);
+  background-color: var(--container-color);
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-style: italic;
+}
+
+/* Feature Swiper */
+.post-features-swiper {
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  margin-top: 2rem;
+}
+
+.post-features {
+  /* Swiper wrapper handles layout */
+}
+
+.feature-box {
+  background-color: var(--container-color);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s;
+}
+
+.feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 4px 4px var(--shadow-color);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  color: var(--first-color);
+  margin-bottom: 1rem;
+}
+
+.feature-title {
+  color: var(--title-color);
+  font-size: var(--h3-font-size);
+  margin-bottom: 0.5rem;
+}
+
+.feature-desc {
+  font-size: var(--small-font-size);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .post-title {
+    font-size: 2rem;
+  }
+  
+  .post-section {
+    padding: 6rem 0 2rem;
+  }
+}

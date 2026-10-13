@@ -1,0 +1,117 @@
+<link rel="stylesheet" href="/assets/css/post.css">
+
+<section class="post-section section" id="p001-post">
+  <div class="post-container">
+
+    <!-- Header -->
+    <header class="post-header">
+      <h1 class="post-title">P-001 OpenGL Obstacle Dodger</h1>
+      <div class="post-meta">
+        <span><i class="ri-calendar-line" aria-hidden="true"></i> May 2025</span>
+        <span><i class="ri-code-box-line" aria-hidden="true"></i> Game Development</span>
+        <span><i class="ri-git-branch-line" aria-hidden="true"></i> v1.0.0</span>
+      </div>
+      <div class="post-tags">
+        <span>C++17</span>
+        <span>OpenGL 3.3</span>
+        <span>GLFW</span>
+        <span>GLAD</span>
+        <span>GLM</span>
+        <span>FreeType</span>
+        <span>OpenAL Soft</span>
+      </div>
+    </header>
+
+    <!-- Hero Image -->
+    <div class="post-hero">
+      <img src="/assets/images/Cover-heroSection.webp" alt="P001 Obstacle Dodger Gameplay" loading="lazy">
+    </div>
+
+    <!-- Content -->
+    <div class="post-content">
+      <h2>Overview</h2>
+      <p>
+        <strong>Obstacle Dodger</strong> is a modern C++ game built from scratch using the <strong>OpenGL 3.3 Core
+          Profile</strong>. This project serves as a comprehensive exploration of low-level graphics programming, audio
+        management, and game loop architecture without relying on high-level commercial game engines like Unity or
+        Unreal Engine.
+      </p>
+
+      <blockquote>
+        "Building a game engine from scratch provides unparalleled insight into memory management, rendering pipelines,
+        and the raw performance capabilities of C++."
+      </blockquote>
+
+      <h2>Key Features</h2>
+      <div class="post-features">
+        <div class="feature-box">
+          <i class="ri-brush-3-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Modern Rendering</h3>
+          <p class="feature-desc">Utilizes OpenGL 3.3 Core Profile with custom vertex and fragment shaders for optimized
+            rendering.</p>
+        </div>
+        <div class="feature-box">
+          <i class="ri-font-size feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">FreeType Text</h3>
+          <p class="feature-desc">Dynamic font rendering engine for UI elements, scoring, and the FPS counter.</p>
+        </div>
+        <div class="feature-box">
+          <i class="ri-volume-up-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">OpenAL Audio</h3>
+          <p class="feature-desc">Integrated 3D spatial audio and sound effects using OpenAL Soft.</p>
+        </div>
+        <div class="feature-box">
+          <i class="ri-gamepad-line feature-icon" aria-hidden="true"></i>
+          <h3 class="feature-title">Input Handling</h3>
+          <p class="feature-desc">Seamless support for both Keyboard and Gamepad/Joystick inputs via GLFW.</p>
+        </div>
+      </div>
+
+      <h2>Technical Implementation</h2>
+      <p>
+        The game architecture relies on <strong>GLFW</strong> for window creation and input handling, while
+        <strong>GLAD</strong> loads the OpenGL function pointers. Math operations, including matrix transformations and
+        vector calculations, are handled efficiently by <strong>GLM</strong>.
+      </p>
+
+      <h3>Shader Compilation</h3>
+      <p>
+        All rendering is executed through programmable shaders. Below is a simplified snippet of how the C++ engine
+        loads and compiles the GLSL shaders dynamically at runtime:
+      </p>
+
+      <pre><code>unsigned int loadShader(GLenum type, const char* source) {
+    unsigned int shader = glCreateShader(type);
+    glShaderSource(shader, 1, &source, NULL);
+    glCompileShader(shader);
+    
+    int success;
+    glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+    if (!success) {
+        char infoLog[512];
+        glGetShaderInfoLog(shader, 512, NULL, infoLog);
+        std::cerr << "Shader Compilation Error:\n" << infoLog << std::endl;
+    }
+    return shader;
+}</code></pre>
+
+      <h2>Installation & Usage</h2>
+      <p>
+        If you want to run the project locally or examine the source code, you will need a C++17 compatible compiler and
+        CMake.
+      </p>
+      <ul>
+        <li>Ensure you have the required dependencies (GLFW, GLAD, GLM, FreeType, OpenAL) installed on your system.</li>
+        <li>Build the project using standard CMake commands: <code>cmake .</code> and <code>make</code>.</li>
+        <li>Run the executable generated in the build directory.</li>
+      </ul>
+
+      <div style="text-align: center; margin-top: 4rem;">
+        <a href="/projects/" class="btn game-btn primary"
+          style="display: inline-flex; justify-content: center; width: auto; padding: 1rem 2rem;">
+          <i class="ri-folder-3-line" aria-hidden="true"></i> Explore More Projects
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
