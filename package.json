@@ -1,7 +1,7 @@
 {
   "name": "mskdevhub-website",
   "version": "1.0.0",
-  "description": "MSK Real Labs Portfolio Website",
+  "description": "MSKDevHub Portfolio Website",
   "main": "index.js",
   "scripts": {
     "build:worker": "esbuild src/index.js --bundle --outfile=public/_worker.js --format=esm",
@@ -18,7 +18,7 @@
   "keywords": [
     "portfolio",
     "game-developer",
-    "mskreallabs",
+    "mskdevhub",
     "mskdevhub-website",
     "cloudflare-pages"
   ],

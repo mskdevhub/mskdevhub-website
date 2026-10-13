@@ -1,15 +1,21 @@
 # mskdevhub-website
 
-Source for the **MSK Real Labs** portfolio website by Muhammad Shaheer Kifayat
-(brand: *mskreallabs*). Originally built and deployed with Cloudflare Wrangler,
-now served through **Cloudflare Pages** with Git integration.
+Source for the **MSKDevHub** portfolio website by Muhammad Shaheer Kifayat —
+covering Software Development, Content Creation and Digital 3D Creation.
+Originally built and deployed with Cloudflare Wrangler, now served through
+**Cloudflare Pages** with Git integration.
 
 - **Repository:** https://github.com/mskdevhub/mskdevhub-website
 - **Production URL:** https://mskdevhub-website.pages.dev
   (previous project: https://mskreallabs.pages.dev)
 
 > The site's design, content, routes, assets and behaviour are preserved from the
-> original project. Only the deployment/organisation details changed.
+> original project. The visible brand was renamed to **MSKDevHub**; the
+> deployment/organisation details were updated.
+>
+> **Protected links:** every pre-existing `mskreallabs` project URL (GitHub repos,
+> releases, itch.io demos), social profile URL, and the contact email are kept
+> exactly as they were. Only visible brand text changed.
 
 ## Stack
 

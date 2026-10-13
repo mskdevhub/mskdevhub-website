@@ -158,7 +158,7 @@
     border-radius: var(--radius-md);
   }
 
-  /* "MSKRealLabs" is wider than very small viewports at the default hero size */
+  /* "MSKDevHub" is wider than very small viewports at the default hero size */
   .home-title {
     font-size: 1.875rem;
     text-shadow: 2px 2px var(--shadow-color);

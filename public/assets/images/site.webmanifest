@@ -1,7 +1,7 @@
 {
-  "name": "MSK Real Labs",
-  "short_name": "MSK",
-  "description": "Official portfolio of Muhammad Shaheer Kifayat (MSK Real Labs). Game Developer, Software Engineer and Graphics Programmer.",
+  "name": "MSKDevHub",
+  "short_name": "MSKDevHub",
+  "description": "Official portfolio of Muhammad Shaheer Kifayat (MSKDevHub). Game Developer, Software Engineer and Graphics Programmer.",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",

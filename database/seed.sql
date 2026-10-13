@@ -1,7 +1,7 @@
 -- personal_info
 INSERT INTO personal_info (name, title, description, years_experience, completed_projects, address, email, phone, availability)
 VALUES (
-    'DecodeBy MSK',
+    'MSKDevHub',
     'Junior Game Developer & IT Undergraduate',
     'I am from Pakistan. I have experience in Programming and I''m skilled in O3DE using C++ with Blender . I love discussing what makes us unique.',
     '3+',
